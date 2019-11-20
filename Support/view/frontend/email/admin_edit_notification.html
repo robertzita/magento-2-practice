@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--@subject  {{trans "\"%admin_name\" edited reply" admin_name=$admin_name}}  @-->
+<!--@vars {
+"admin_name": "Admin Name",
+"customer_name": "Customer Name",
+"old_comment": "Old Comment",
+"new_comment": "New Comment"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans 'Hello <strong>%customer_name</strong>.' customer_name=$customer_name |raw}}</p>
+<p>{{trans '<strong>%admin_name</strong> changed reply.' admin_name=$admin_name |raw}}</p>
+<p>{{trans 'Old Comment: <strong>%old_comment</strong>.' old_comment=$old_comment |raw}}</p>
+<p>{{trans 'New Comment: <strong>%new_comment</strong>.' new_comment=$new_comment |raw}}</p>
+
+{{template config_path="design/email/footer_template"}}

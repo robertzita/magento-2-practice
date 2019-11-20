@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!--@subject  {{trans "%customer_name replied on %support_title " customer_name=$customer_name support_title=$support_title}}  @-->
+<!--@vars {
+"support_title": "Support Title",
+"customer_name": "Customer Name",
+"customer_email": "Customer Email",
+"comment": "Comment"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p> Hello,</p>
+<p>{{trans '<strong>%customer_name</strong> replied on Ticket: <strong>%support_title</strong> .' customer_name=$customer_name support_title=$support_title |raw}}</p>
+<p>{{trans 'Email: <strong>%customer_email</strong>' customer_email=$customer_email |raw}}</p>
+<p>{{trans 'Comment: <strong>%comment</strong>.' comment=$comment |raw}}</p>
+
+{{template config_path="design/email/footer_template"}}

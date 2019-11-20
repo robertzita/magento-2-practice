@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">reply_listing.reply_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>iweb_reply_columns</spinner>
+        <deps>
+            <dep>reply_listing.reply_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="reply_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <filterUrlParams>
+                <param name="support_id">*</param>
+            </filterUrlParams>
+        </settings>
+        <aclResource>Iweb_Support::support</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="reply_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Are you sure you want to delete selected items?</message>
+                        <title translate="true">Delete items</title>
+                    </confirm>
+                    <url path="support/reply/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+            <action name="visible">
+                <settings>
+                    <type>status</type>
+                    <label translate="true">Visible</label>
+                    <actions>
+                        <action name="0">
+                            <type>yes</type>
+                            <label translate="true">Yes</label>
+                            <url path="support/reply/massVisible">
+                                <param name="visible">yes</param>
+                            </url>
+                        </action>
+                        <action name="1">
+                            <type>no</type>
+                            <label translate="true">No</label>
+                            <url path="support/reply/massVisible">
+                                <param name="visible">no</param>
+                            </url>
+                        </action>
+                    </actions>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="iweb_reply_columns">
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="id">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Id</label>
+            </settings>
+        </column>
+        <column name="admin_id" class="Iweb\Support\Ui\Component\Listing\Reply\Column\AdminId">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Replied By</label>
+            </settings>
+        </column>
+        <column name="comment">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Comment</label>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <dateFormat>dd MMM Y H:mm:ss</dateFormat>
+                <sorting>desc</sorting>
+                <label translate="true">Created</label>
+            </settings>
+        </column>
+        <column name="visible">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Visible</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Iweb\Support\Ui\Component\Listing\Reply\Column\ReplyActions">
+            <settings>
+                <indexField>id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

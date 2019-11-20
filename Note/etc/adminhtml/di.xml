@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Block\Adminhtml\Order\View\Items">
+        <plugin name="iweb_note_admin_plugin" type="Iweb\Note\Plugin\Adminhtml\AdminDeliveryNotePlugin"/>
+    </type>
+    <preference for="Magento\Sales\Model\Order\Pdf\Invoice" type="Iweb\Note\Model\Rewrite\Order\Pdf\Invoice"/>
+<!--    <type name="Magento\Sales\Model\Order\Pdf\Invoice">
+        <plugin name="iweb_note_admin_invoice_pdf_delivery_note" type="Iweb\Note\Plugin\Adminhtml\InsertDeliveryNoteToInvoicePdf"/>
+    </type>-->
+</config>

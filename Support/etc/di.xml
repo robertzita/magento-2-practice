@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="support_listing_data_source" xsi:type="string">Iweb\Support\Model\ResourceModel\Support\Grid\Collection</item>
+                <item name="reply_listing_data_source" xsi:type="string">Iweb\Support\Model\ResourceModel\Reply\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Iweb\Support\Model\ResourceModel\Support\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">iweb_support</argument>
+            <argument name="eventPrefix" xsi:type="string">iweb_support_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">support_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Iweb\Support\Model\ResourceModel\Support</argument>
+        </arguments>
+    </type>
+    <type name="Iweb\Support\Model\ResourceModel\Reply\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">iweb_support_reply</argument>
+            <argument name="eventPrefix" xsi:type="string">iweb_support_reply_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">reply_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Iweb\Support\Model\ResourceModel\Reply</argument>
+        </arguments>
+    </type>
+</config>

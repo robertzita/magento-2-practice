@@ -1,0 +1,39 @@
+<?php 
+$replies = $block->getReplyData($block->getCurrentId());
+?>
+<div class="block block-reply-list">
+    <div class="block-content">
+        <div class="table-wrapper my-replies">
+            <table class="data table my-replies-table" id="my-replies-table">
+                <thead>
+                <tr>
+                    <th scope="col" class="col comment"><?= __('Comment') ?></th>
+                    <th scope="col" class="col date of comment"><?= __('Date') ?></th>
+                    <th scope="col" class="col actions"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach ($replies as $reply): ?>
+                    <tr>
+                        <td data-th="<?= $block->escapeHtml(__('Comment')) ?>" class="col comment"><?= $block->escapeHtml($reply->getComment()) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Date')) ?>" class="col date of comment"><?= $block->escapeHtml($block->formatDate($reply->getCreatedAt(),\IntlDateFormatter::MEDIUM,1)) ?></td>
+                        <td data-th="<?= $block->escapeHtml(__('Actions')) ?>" class="col actions">
+                            <?php if(empty($reply->getAdminId())): ?>
+                            <a class="action edit" href="<?= $block->escapeUrl($block->getUrl('support/reply/edit', ['reply_id' => $reply->getId()])) ?>"><span><?= $block->escapeHtml(__('Edit')) ?></span></a>
+                            <a class="action delete" href="<?= $block->escapeUrl($block->getUrl('support/reply/delete', ['reply_id' => $reply->getId()])) ?>"><span><?= $block->escapeHtml(__('Delete')) ?></span></a>
+                            <?php else: ?>
+                            <p>Admin replied</p>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="actions-toolbar">
+    <div class="primary">
+        <a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>"><span><?= $block->escapeHtml(__('Back')) ?></span></a>
+    </div>
+</div>

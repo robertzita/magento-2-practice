@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<!--@subject  {{trans "New ticket: %support_title " support_title=$support_title}}  @-->
+<!--@vars {
+"support_title": "Support Title",
+"customer_name": "Customer Name"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p>{{trans 'Hello <strong>%customer_name</strong>.' customer_name=$customer_name |raw}}</p>
+<p> Support team will reply on your ticket.<p>
+
+{{template config_path="design/email/footer_template"}}

@@ -1,0 +1,29 @@
+<?php
+$reply = $block->getReplyData($block->getReplyId());
+?>
+<form class="form-reply-create"
+      action="<?= $block->getPostActionUrl() ?>"
+      method="post"
+      id="form-reply">
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Edit current reply')) ?></span></legend><br/>
+        <input type="hidden" name="reply_id" value="<?= $reply->getId() ?>" />
+        <input type="hidden" name="support_id" value="<?= $reply->getSupportId() ?>"/>
+        <label>
+            Comment <input type="text" name="comment"  value="<?= $reply->getComment() ?>" id="comment"></input>
+        </label>
+    </fieldset>
+    <div class="action-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Edit')) ?>">
+                <span><?= $block->escapeHtml(__('Edit')) ?></span>
+            </button>
+        </div><br/>
+        <div class="secondary">
+            <a class="action back" href="<?= $block->getBackUrl($reply->getSupportId()) ?>">
+                <span><?= $block->escapeHtml(__('Go back')) ?></span>
+            </a>
+        </div>
+    </div>
+</form>
+

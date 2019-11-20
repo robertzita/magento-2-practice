@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Iweb_Support::support"
+             title="Support"
+             translate="title"
+             module="Iweb_Support"
+             sortOrder="70"
+             parent="Magento_Customer::customer"
+             action="support/supportpage/index"
+             resource="Iweb_Support::support"/>
+    </menu>
+</config>

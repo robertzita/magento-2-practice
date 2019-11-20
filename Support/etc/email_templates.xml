@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="support_reply_admin_reply_notification_email_template" label="Reply Notification" file="admin_reply_notification.html" type="html" module="Iweb_Support" area="frontend"/>
+    <template id="support_reply_admin_edit_notification_email_template" label="Reply Edit Notification" file="admin_edit_notification.html" type="html" module="Iweb_Support" area="frontend"/>
+    <template id="support_reply_customer_new_ticket_notification_email_template" label="New Ticket Notification" file="customer_new_ticket_notification.html" type="html" module="Iweb_Support" area="frontend"/>
+    <template id="support_reply_customer_reply_notification_email_template" label="Customer Reply Notification" file="customer_reply_notification.html" type="html" module="Iweb_Support" area="frontend"/>
+</config>

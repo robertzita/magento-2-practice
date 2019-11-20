@@ -1,0 +1,25 @@
+<form class="form-reply-create"
+      action="<?= $block->getPostActionUrl() ?>"
+      method="post"
+      id="form-reply">
+    <?= $block->getBlockHtml('formkey') ?>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= $block->escapeHtml(__('Create new reply')) ?></span></legend><br/>
+        <input type="hidden" name="support_id" value="<?= $block->getCurrentId() ?>"/>
+        <label>
+            Comment <input type="text" name="comment" id="comment"></input>
+        </label>
+    </fieldset>
+    <div class="action-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Reply')) ?>">
+                <span><?= $block->escapeHtml(__('Reply')) ?></span>
+            </button>
+        </div><br/>
+        <div class="secondary">
+            <a class="action back" href="<?= $block->getBackUrl() ?>">
+                <span><?= $block->escapeHtml(__('Go back')) ?></span>
+            </a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,10 @@
+<?php if($deliveryNote = $block->getDeliveryNote()): ?>
+<div class="block block-order-delivery-note-view">
+    <div class="block-title">
+        <strong><?= __('Delivery Note') ?></strong>
+    </div>
+    <div class="content">
+        <?= $deliveryNote ?>
+    </div>
+</div>
+<?php endif;?>
